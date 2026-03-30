@@ -111,9 +111,9 @@ elif choice == "리뷰 작성":
         st.error(f"백엔드 서버({API_URL})에 연결할 수 없습니다.")
 
 elif choice == "최근 리뷰 보기":
-    st.subheader("최근 등록된 리뷰 목록")
+    st.subheader("최근 등록된 리뷰 목록 (30개)")
     try:
-        response = requests.get(f"{API_URL}/reviews/")
+        response = requests.get(f"{API_URL}/reviews/?limit=30")
         if response.status_code == 200:
             reviews = response.json()
             if not reviews:
